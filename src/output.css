@@ -7,12 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-zinc-50: oklch(98.5% 0 0);
-    --color-zinc-400: oklch(70.5% 0.015 286.067);
-    --color-zinc-800: oklch(27.4% 0.006 286.033);
-    --color-zinc-950: oklch(14.1% 0.005 285.823);
     --spacing: 0.25rem;
-    --container-2xl: 42rem;
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-bold: 700;
@@ -169,34 +164,6 @@
   }
 }
 @layer utilities {
-  .mb-4 {
-    margin-bottom: calc(var(--spacing) * 4);
-  }
-  .flex {
-    display: flex;
-  }
-  .min-h-screen {
-    min-height: 100vh;
-  }
-  .max-w-2xl {
-    max-width: var(--container-2xl);
-  }
-  .items-center {
-    align-items: center;
-  }
-  .justify-center {
-    justify-content: center;
-  }
-  .border-b {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
-  }
-  .border-zinc-800 {
-    border-color: var(--color-zinc-800);
-  }
-  .bg-zinc-950 {
-    background-color: var(--color-zinc-950);
-  }
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
@@ -208,17 +175,6 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .text-zinc-50 {
-    color: var(--color-zinc-50);
-  }
-  .text-zinc-400 {
-    color: var(--color-zinc-400);
-  }
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -227,7 +183,6 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
       --tw-font-weight: initial;
     }
   }
