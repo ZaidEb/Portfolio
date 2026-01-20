@@ -170,9 +170,6 @@
   }
 }
 @layer utilities {
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
   .grid {
     display: grid;
   }
@@ -214,9 +211,6 @@
   }
   .text-zinc-50 {
     color: var(--color-zinc-50);
-  }
-  .text-zinc-300 {
-    color: var(--color-zinc-300);
   }
 }
 @property --tw-border-style {

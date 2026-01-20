@@ -6,10 +6,13 @@
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css",
     "watch:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
-    "serve": "python3 -m http.server 5173"
+    "serve": "python3 -m http.server 8000",
+    "dev": "concurrently -k \"npm:watch:css\" \"npm:serve\""
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
+    "concurrently": "^9.2.1",
     "tailwindcss": "^4.1.18"
   }
 }
+ 
