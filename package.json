@@ -4,15 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css",
-    "watch:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./src/output.css",
+    "watch": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "serve": "python3 -m http.server 8000",
-    "dev": "concurrently -k \"npm:watch:css\" \"npm:serve\""
+    "dev": "concurrently \"npm run watch\" \"npm run serve\""
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "concurrently": "^9.2.1",
-    "tailwindcss": "^4.1.18"
+    "concurrently": "^9.2.1"
   }
 }
- 
