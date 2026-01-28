@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./src/output.css" />
     <title>Portfolio</title>
   </head>
+
   <body>
     <!-- PERSON 1 SECTION -->
     <section class="p-8">
@@ -13,16 +14,33 @@
       <p>Edit your content here...</p>
     </section>
 
-    <!-- PERSON 2 SECTION -->
-    <section class="p-8 space-y-12">
+    <!-- PERSON 2 SECTION (header) -->
+    <section class="p-8">
+      <h1 class="text-4xl font-bold">Person 2</h1>
+      <p>Edit your content here...</p>
+    </section>
+
+    <!-- PERSON 2 SECTION (animated block) -->
+    <section
+      class="relative overflow-hidden p-8 space-y-12 opacity-0 translate-y-12 transition-[opacity,transform] duration-700 ease-out"
+      data-animate="person2"
+    >
+      <div
+        data-spotlight
+        class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500"
+      ></div>
+
       <div class="space-y-6">
         <div class="mx-auto max-w-2xl text-center space-y-2">
           <h2 class="text-2xl font-semibold text-slate-900">Our Projects</h2>
-          <p class="text-slate-600">A showcase of our recent work and successful client collaborations.</p>
+          <p class="text-slate-600">
+            A showcase of our recent work and successful client collaborations.
+          </p>
         </div>
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Social media platform" loading="lazy" />
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3" data-stagger="cards">
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1498050108023-c5249f4df085.jpeg" alt="Social media platform" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -32,8 +50,9 @@
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-social">→</a>
             </div>
           </article>
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Learning management system" loading="lazy" />
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1521737604893-d14cc237f11d.jpeg" alt="Learning management system" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -43,8 +62,9 @@
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-lms">→</a>
             </div>
           </article>
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80" alt="Analytics dashboard" loading="lazy" />
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1556761175-4b46a572b786.jpeg" alt="Analytics dashboard" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -54,8 +74,9 @@
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-analytics">→</a>
             </div>
           </article>
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="E-commerce experience" loading="lazy" />
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1497366754035-f200968a6e72.jpeg" alt="E-commerce experience" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -65,8 +86,9 @@
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-ecom">→</a>
             </div>
           </article>
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=900&q=80" alt="Mobile banking app" loading="lazy" />
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1448932223592-d1fc686e76ea.jpeg" alt="Mobile banking app" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -76,8 +98,9 @@
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-banking">→</a>
             </div>
           </article>
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="AI support assistant" loading="lazy" />
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+            <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1498050108023-c5249f4df085.jpeg" alt="AI support assistant" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
@@ -95,6 +118,7 @@
           <h2 class="text-4xl font-semibold text-slate-900">What they think</h2>
           <p class="text-sm font-semibold text-slate-800">Join Us</p>
         </div>
+
         <div class="grid gap-6 lg:grid-cols-3 md:grid-cols-2">
           <article class="rounded-2xl bg-slate-100 p-8 shadow-sm">
             <div class="mb-4 text-lg text-slate-600">★★★★★</div>
@@ -109,6 +133,7 @@
               </div>
             </div>
           </article>
+
           <article class="rounded-2xl bg-slate-100 p-8 shadow-sm">
             <div class="mb-4 text-lg text-slate-600">★★★★★</div>
             <p class="text-lg font-semibold leading-7 text-slate-700">
@@ -122,6 +147,7 @@
               </div>
             </div>
           </article>
+
           <article class="rounded-2xl bg-slate-100 p-8 shadow-sm">
             <div class="mb-4 text-lg text-slate-600">★☆☆☆☆</div>
             <p class="text-lg font-semibold leading-7 text-slate-700">
@@ -144,5 +170,7 @@
       <h1 class="text-4xl font-bold">Person 3</h1>
       <p>Edit your content here...</p>
     </section>
+
+    <script src="./src/scroll.js"></script>
   </body>
 </html>
