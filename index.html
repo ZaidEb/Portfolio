@@ -3,10 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/output.css" />
     <style>
       :root {
         --card-ease: cubic-bezier(.2, .9, .2, 1);
+        --font-sans: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+        --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --text-primary: #111111;
+        --text-secondary: #3a3a3a;
+        --text-muted: #6b6b6b;
+        --text-disabled: #8a8a8a;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        color: var(--text-primary);
+      }
+
+      p {
+        color: var(--text-secondary);
+      }
+
+      small,
+      .text-xs,
+      .text-sm {
+        color: var(--text-muted);
+      }
+
+      .text-slate-900 {
+        color: var(--text-primary) !important;
+      }
+
+      .text-slate-800,
+      .text-slate-700 {
+        color: var(--text-secondary) !important;
+      }
+
+      .text-slate-600,
+      .text-slate-500 {
+        color: var(--text-muted) !important;
+      }
+
+      .text-slate-400,
+      .text-slate-300 {
+        color: var(--text-disabled) !important;
+      }
+
+      input,
+      textarea,
+      button {
+        font-family: var(--font-sans);
+        color: var(--text-primary);
+      }
+
+      code,
+      pre {
+        font-family: var(--font-mono);
       }
 
       .review-card {
@@ -81,11 +139,148 @@
       .review-card:focus-visible .review-stars {
         color: #2563eb;
       }
+
+      /* Project cards: keep text legible on photos */
+      .project-card {
+        background: #f6f6f6;
+        border-color: #e0e0e0;
+      }
+
+      .project-card .project-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.35) 0%,
+          rgba(0, 0, 0, 0.65) 75%,
+          rgba(0, 0, 0, 0.75) 100%
+        );
+        opacity: 1;
+        transition: opacity 250ms ease, transform 420ms var(--card-ease);
+      }
+
+      .project-card:hover .project-overlay,
+      .project-card:focus-visible .project-overlay {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      .project-card h3 {
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+      }
+
+      .project-card p {
+        color: #f7f7f7;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+      }
+
+      #smooth-cursor {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0;
+        transition: opacity 220ms ease;
+      }
+
+      #smooth-cursor .cursor-dot {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 9999px;
+        background: radial-gradient(circle at 30% 30%, #38bdf8, #0ea5e9 48%, #0284c7);
+        box-shadow:
+          0 0 22px rgba(14, 165, 233, 0.88),
+          0 0 44px rgba(99, 102, 241, 0.45);
+        transform: translate3d(-50%, -50%, 0);
+      }
+
+      #smooth-cursor .cursor-ring {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        border-radius: 9999px;
+        border: 2px solid rgba(56, 189, 248, 0.75);
+        box-shadow:
+          0 0 28px rgba(56, 189, 248, 0.55),
+          0 0 60px rgba(99, 102, 241, 0.35);
+        transform: translate3d(-50%, -50%, 0);
+        transition: border-color 180ms ease, opacity 200ms ease;
+      }
+
+      #smooth-cursor .cursor-ring.is-pressed {
+        border-color: rgba(99, 102, 241, 0.9);
+      }
+
+      #smooth-cursor.is-hidden {
+        opacity: 0;
+      }
+
+      .cursor-hint {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        font-size: 0.95rem;
+        color: #475569;
+        pointer-events: none;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .cursor-hint .hint-desktop {
+        display: none;
+      }
+
+      .cursor-hint .hint-mobile {
+        display: inline;
+      }
+
+      @media (min-width: 768px) {
+        .cursor-hint .hint-desktop {
+          display: inline;
+        }
+
+        .cursor-hint .hint-mobile {
+          display: none;
+        }
+      }
+
+      .cursor-touch-ping {
+        position: fixed;
+        width: 42px;
+        height: 42px;
+        border-radius: 9999px;
+        border: 2px solid rgba(56, 189, 248, 0.5);
+        background: rgba(56, 189, 248, 0.12);
+        pointer-events: none;
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.7;
+        animation: cursor-ping 900ms cubic-bezier(.2, .9, .2, 1) forwards;
+        z-index: 45;
+      }
+
+      @keyframes cursor-ping {
+        to {
+          transform: translate(-50%, -50%) scale(1.9);
+          opacity: 0;
+        }
+      }
     </style>
     <title>Portfolio</title>
   </head>
 
   <body>
+    <!-- Smooth cursor overlay -->
+    <div class="cursor-hint" data-cursor-hint>
+      <span class="hint-desktop">Move your mouse around</span>
+      <span class="hint-mobile">Tap anywhere to see the cursor</span>
+    </div>
+    <div id="smooth-cursor" class="is-hidden" aria-hidden="true">
+      <div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-ring" data-cursor-ring></div>
+    </div>
+
     <!-- PERSON 1 SECTION -->
     <section class="p-8">
       <h1 class="text-4xl font-bold">Person 1</h1>
@@ -117,73 +312,73 @@
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3" data-stagger="cards">
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1498050108023-c5249f4df085.jpeg" alt="Social media platform" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">Social Media Platform</h3>
-                <p class="text-sm text-slate-100 drop-shadow">Community-first app with live chat and creator tooling.</p>
+                <h3 class="text-lg font-semibold">Social Media Platform</h3>
+                <p class="text-sm">Community-first app with live chat and creator tooling.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-social">→</a>
             </div>
           </article>
 
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1521737604893-d14cc237f11d.jpeg" alt="Learning management system" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">Learning Management System</h3>
-                <p class="text-sm text-slate-100 drop-shadow">Courses, assessments, and analytics for educators.</p>
+                <h3 class="text-lg font-semibold">Learning Management System</h3>
+                <p class="text-sm">Courses, assessments, and analytics for educators.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-lms">→</a>
             </div>
           </article>
 
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1556761175-4b46a572b786.jpeg" alt="Analytics dashboard" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">Analytics Dashboard</h3>
-                <p class="text-sm text-slate-100 drop-shadow">Executive KPIs with drilldowns and real-time alerts.</p>
+                <h3 class="text-lg font-semibold">Analytics Dashboard</h3>
+                <p class="text-sm">Executive KPIs with drilldowns and real-time alerts.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-analytics">→</a>
             </div>
           </article>
 
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1497366754035-f200968a6e72.jpeg" alt="E-commerce experience" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">E-commerce Experience</h3>
-                <p class="text-sm text-slate-100 drop-shadow">High-conversion storefront with personalization.</p>
+                <h3 class="text-lg font-semibold">E-commerce Experience</h3>
+                <p class="text-sm">High-conversion storefront with personalization.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-ecom">→</a>
             </div>
           </article>
 
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1448932223592-d1fc686e76ea.jpeg" alt="Mobile banking app" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">Mobile Banking App</h3>
-                <p class="text-sm text-slate-100 drop-shadow">Secure payments, budgeting tools, biometric sign-in.</p>
+                <h3 class="text-lg font-semibold">Mobile Banking App</h3>
+                <p class="text-sm">Secure payments, budgeting tools, biometric sign-in.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-banking">→</a>
             </div>
           </article>
 
-          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
+          <article class="project-card group relative overflow-hidden rounded-2xl border bg-white shadow-sm opacity-0 translate-y-8 scale-[0.98]">
             <img class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" src="media/photo-1498050108023-c5249f4df085.jpeg" alt="AI support assistant" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30 opacity-0 transition group-hover:opacity-100"></div>
+            <div class="project-overlay absolute inset-0"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-white drop-shadow">AI Support Assistant</h3>
-                <p class="text-sm text-slate-100 drop-shadow">Multichannel helpdesk automation with human-in-the-loop.</p>
+                <h3 class="text-lg font-semibold">AI Support Assistant</h3>
+                <p class="text-sm">Multichannel helpdesk automation with human-in-the-loop.</p>
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-ai">→</a>
             </div>
@@ -191,60 +386,89 @@
         </div>
       </div>
 
-      <div class="space-y-10">
-        <div class="mx-auto max-w-3xl text-center space-y-2">
-          <h2 class="text-4xl font-semibold text-slate-900">What they think</h2>
-          <p class="text-sm font-semibold text-slate-800">Join Us</p>
+      <div class="space-y-12">
+        <div class="mx-auto max-w-6xl text-center space-y-3">
+          <p class="text-sm font-semibold text-sky-600">Feedback</p>
+          <h2 class="text-4xl font-semibold text-slate-900">What people are saying</h2>
+          <p class="text-slate-600 max-w-[70ch] mx-auto">
+            Recent notes from collaborators plus a quick form if you want to add your voice.
+            Everything is stacked in a single column on small screens for readability.
+          </p>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-3 md:grid-cols-2">
-          <article class="review-card group rounded-2xl p-8 shadow-sm" tabindex="0">
-            <div class="review-content space-y-6">
-              <div class="review-stars text-lg">★★★★★</div>
-              <p class="text-lg font-semibold leading-7 text-slate-700">
-                "The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design."
-              </p>
-              <div class="flex items-center gap-4 pt-2">
-                <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
-                <div>
-                  <div class="text-lg font-semibold text-slate-900">John Doe</div>
-                  <div class="text-sm text-slate-600">Company Name</div>
-                </div>
-              </div>
+        <div class="mx-auto max-w-6xl space-y-8">
+          <aside class="review-card rounded-2xl p-5 shadow-sm bg-white/90 backdrop-blur max-w-lg mx-auto" tabindex="0">
+            <div class="review-content space-y-4">
+              <h3 class="text-2xl font-semibold text-slate-900">Leave feedback</h3>
+              <form class="space-y-3" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks for your feedback!');">
+                <input id="fb-name" name="name" type="text" class="w-full min-h-[44px] rounded-xl border border-slate-200 px-3 py-2 text-slate-900 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none" placeholder="Name (optional)" />
+                <textarea id="fb-message" name="message" rows="4" required class="w-full min-h-[100px] rounded-xl border border-slate-200 px-3 py-2 text-slate-900 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none" placeholder="Your feedback"></textarea>
+                <button
+                  type="submit"
+                  class="w-full rounded-xl bg-slate-900 text-white font-semibold py-2.5 shadow-sm transition hover:bg-slate-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 focus:ring-offset-white"
+                >
+                  Send
+                </button>
+              </form>
             </div>
-          </article>
+          </aside>
 
-          <article class="review-card group rounded-2xl p-8 shadow-sm" tabindex="0">
-            <div class="review-content space-y-6">
-              <div class="review-stars text-lg">★★★★★</div>
-              <p class="text-lg font-semibold leading-7 text-slate-700">
-                "The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design."
-              </p>
-              <div class="flex items-center gap-4 pt-2">
-                <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
-                <div>
-                  <div class="text-lg font-semibold text-slate-900">John Doe</div>
-                  <div class="text-sm text-slate-600">Company Name</div>
-                </div>
-              </div>
+          <div class="space-y-6">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+              <h3 class="text-xl font-semibold text-slate-900">What people wrote</h3>
+              <span class="text-sm text-slate-500">Latest highlights</span>
             </div>
-          </article>
 
-          <article class="review-card group rounded-2xl p-8 shadow-sm" tabindex="0">
-            <div class="review-content space-y-6">
-              <div class="review-stars text-lg">★☆☆☆☆</div>
-              <p class="text-lg font-semibold leading-7 text-slate-700">
-                "The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design."
-              </p>
-              <div class="flex items-center gap-4 pt-2">
-                <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
-                <div>
-                  <div class="text-lg font-semibold text-slate-900">John Doe</div>
-                  <div class="text-sm text-slate-600">Company Name</div>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <article class="review-card group rounded-2xl p-8 shadow-sm" tabindex="0">
+                <div class="review-content space-y-6">
+                  <div class="review-stars text-lg">★★★★★</div>
+                  <p class="text-lg font-semibold leading-7 text-slate-700">
+                    "Polished interactions and quick turnarounds. The smooth cursor demo sealed the deal for us."
+                  </p>
+                  <div class="flex items-center gap-4 pt-2">
+                    <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
+                    <div>
+                      <div class="text-lg font-semibold text-slate-900">Ava Thompson</div>
+                      <div class="text-sm text-slate-600">Product Lead, Vertex</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </article>
+
+              <article class="review-card group rounded-2xl p-8 shadow-sm" tabindex="0">
+                <div class="review-content space-y-6">
+                  <div class="review-stars text-lg">★★★★☆</div>
+                  <p class="text-lg font-semibold leading-7 text-slate-700">
+                    "Clear communication and beautiful visuals. Would love even more accessibility notes next time."
+                  </p>
+                  <div class="flex items-center gap-4 pt-2">
+                    <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
+                    <div>
+                      <div class="text-lg font-semibold text-slate-900">Samir Patel</div>
+                      <div class="text-sm text-slate-600">Founder, Northwind Labs</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="review-card group rounded-2xl p-8 shadow-sm lg:col-span-1 md:col-span-2" tabindex="0">
+                <div class="review-content space-y-6">
+                  <div class="review-stars text-lg">★★★★★</div>
+                  <p class="text-lg font-semibold leading-7 text-slate-700">
+                    "Loved the motion details and the thoughtful gradients. The project launch felt effortless."
+                  </p>
+                  <div class="flex items-center gap-4 pt-2">
+                    <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Reviewer" />
+                    <div>
+                      <div class="text-lg font-semibold text-slate-900">Jamie Lee</div>
+                      <div class="text-sm text-slate-600">Design Manager, Aurora</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
