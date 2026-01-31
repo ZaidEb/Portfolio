@@ -56,3 +56,101 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+
+// Smooth cursor effect for pointer and touch
+(() => {
+  const cursor = document.getElementById("smooth-cursor");
+  const dot = cursor?.querySelector("[data-cursor-dot]");
+  const ring = cursor?.querySelector("[data-cursor-ring]");
+  if (!cursor || !dot || !ring) return;
+
+  const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+
+  if (isFinePointer) {
+    document.documentElement.classList.add("has-smooth-cursor");
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let dotX = targetX;
+    let dotY = targetY;
+    let ringX = targetX;
+    let ringY = targetY;
+    let pressed = false;
+    let visible = false;
+
+    const show = () => {
+      if (!visible) {
+        cursor.classList.remove("is-hidden");
+        visible = true;
+      }
+    };
+
+    const hide = () => {
+      cursor.classList.add("is-hidden");
+      visible = false;
+    };
+
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        show();
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("mouseleave", hide, { passive: true });
+
+    const animate = () => {
+      dotX += (targetX - dotX) * 0.18;
+      dotY += (targetY - dotY) * 0.18;
+      ringX += (targetX - ringX) * 0.12;
+      ringY += (targetY - ringY) * 0.12;
+
+      dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${pressed ? 0.78 : 1})`;
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    window.addEventListener(
+      "mousedown",
+      () => {
+        pressed = true;
+        ring.classList.add("is-pressed");
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "mouseup",
+      () => {
+        pressed = false;
+        ring.classList.remove("is-pressed");
+      },
+      { passive: true }
+    );
+  } else {
+    const spawnPing = (x, y) => {
+      const ping = document.createElement("span");
+      ping.className = "cursor-touch-ping";
+      ping.style.left = `${x}px`;
+      ping.style.top = `${y}px`;
+      document.body.appendChild(ping);
+      ping.addEventListener("animationend", () => ping.remove());
+    };
+
+    window.addEventListener(
+      "touchstart",
+      (e) => {
+        const touch = e.touches[0];
+        if (!touch) return;
+        spawnPing(touch.clientX, touch.clientY);
+      },
+      { passive: true }
+    );
+  }
+})();
