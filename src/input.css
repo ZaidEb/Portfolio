@@ -1,1 +1,133 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+    @apply min-h-screen flex items-center justify-center px-6 bg-white text-gray-900;
+}
+
+.hero-content {
+    @apply text-center max-w-4xl w-full;
+}
+
+.hero-title { 
+    @apply text-[4.5rem] font-bold text-black tracking-tight leading-[0.9]; 
+    margin: 0; 
+}
+
+.hero-subtitle { 
+    @apply text-[4.8rem] font-semibold text-black leading-[1.2]; 
+    margin: 0; 
+}
+
+.hero-title + .hero-subtitle {
+    margin-top: 0.25rem;
+}
+
+.hero-text {
+    @apply text-gray-600 mt-6 max-w-xl mx-auto;
+}
+
+/* Buttons */
+.hero-buttons {
+    @apply flex justify-center gap-4 mt-8;
+}
+
+.btn-primary {
+    @apply px-5 py-2.5 bg-black text-white rounded-lg font-medium text-base hover:bg-gray-800;
+}
+
+.btn-secondary {
+    @apply px-5 py-2.5 bg-white text-black border border-black rounded-lg font-medium text-base hover:bg-gray-100;
+}
+
+/* Hero number cards */
+.hero-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+.card {
+    @apply bg-gray-100 px-6 py-4 rounded-lg border border-gray-300 text-center;
+    width: 200px;
+}
+
+.card h3 {
+    @apply font-bold text-black;
+    font-size: 1.75rem;
+    margin-bottom: 0.05rem;
+}
+
+.card p {
+    @apply text-gray-600;
+    font-size: 0.75rem;
+}
+
+/* ---------------- TEAM SECTION ---------------- */
+.team {
+    @apply py-16 bg-white text-gray-900;
+}
+
+.team-content {
+    @apply text-center max-w-6xl mx-auto px-6;
+}
+
+.team-title {
+    @apply text-5xl font-bold;
+}
+
+.team-text {
+    @apply text-gray-600 mt-3 mb-12;
+}
+
+/* Team cards grid */
+.team-cards {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 mb-12;
+}
+
+.team-card {
+    @apply bg-white p-6 text-center;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.team-card-img { 
+    @apply w-32 h-32 mx-auto object-cover bg-gray-300; 
+    border-radius: 0;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.team-card-name {
+    @apply text-xl font-semibold mb-1;
+}
+
+.team-card-role {
+    @apply text-gray-600 mb-4;
+}
+
+.skill-card { 
+    @apply bg-gray-200 px-2 py-0.5 text-[0.65rem] text-gray-700; 
+    border-radius: 0;
+    margin-bottom: 1.5rem;
+}
+
+.skills-row { 
+    @apply flex justify-center gap-1 flex-wrap mb-4; 
+}
+
+.team-buttons {
+    @apply flex justify-center gap-2 mt-4;
+}
+
+.team-buttons button {
+    @apply px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800;
+    margin-bottom: 1rem;
+}
+
