@@ -1,36 +1,36 @@
-const ease = "cubic-bezier(.2,.9,.2,1)";
-
 function reveal(el, delay = 0) {
-  el.style.transitionProperty = "opacity, transform";
-  el.style.transitionDuration = "900ms";
-  el.style.transitionTimingFunction = ease;
+  el.classList.add("reveal-effect");
   el.style.transitionDelay = `${delay}ms`;
 
   el.classList.remove("opacity-0", "translate-y-12", "translate-y-8", "scale-[0.98]");
   el.classList.add("opacity-100", "translate-y-0", "scale-100");
 }
 
-function attachSpotlight(section) {
-  const layer = section.querySelector("[data-spotlight]");
-  if (!layer) return;
+// Global spotlight effect
+(() => {
+  const spotlight = document.createElement("div");
+  spotlight.style.position = "fixed";
+  spotlight.style.top = "0";
+  spotlight.style.left = "0";
+  spotlight.style.width = "100%";
+  spotlight.style.height = "100%";
+  spotlight.style.pointerEvents = "none";
+  spotlight.style.zIndex = "5"; // Behind content (z-10) but above backgrounds
+  spotlight.style.transition = "opacity 0.3s ease";
+  spotlight.style.opacity = "0"; 
+  document.body.appendChild(spotlight);
 
-  const onMove = (e) => {
-    const r = section.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
+  const colors = "rgba(56,189,248,.15), rgba(99,102,241,.10), rgba(0,0,0,0) 65%";
 
-    layer.style.opacity = "1";
-    layer.style.background = `radial-gradient(420px circle at ${x}px ${y}px, rgba(56,189,248,.22), rgba(99,102,241,.12), rgba(0,0,0,0) 65%)`;
-  };
+  window.addEventListener("mousemove", (e) => {
+    spotlight.style.opacity = "1";
+    spotlight.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, ${colors})`;
+  });
 
-  const onLeave = () => {
-    layer.style.opacity = "0";
-  };
-
-  section.addEventListener("mousemove", onMove, { passive: true });
-  section.addEventListener("mouseleave", onLeave, { passive: true });
-  section.addEventListener("touchstart", () => (layer.style.opacity = "0"), { passive: true });
-}
+  document.addEventListener("mouseleave", () => {
+    spotlight.style.opacity = "0";
+  });
+})();
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -39,7 +39,6 @@ const observer = new IntersectionObserver(
 
       const section = entry.target;
       reveal(section, 0);
-      attachSpotlight(section);
 
       const grid = section.querySelector('[data-stagger="cards"]');
       if (grid) {
@@ -154,3 +153,6 @@ document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el)
     );
   }
 })();
+
+// Initialize spotlight for all containers
+// document.querySelectorAll("[data-spotlight-container]").forEach(attachSpotlight);
