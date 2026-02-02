@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------------- HERO SECTION ---------------- */
 .hero {
     @apply min-h-screen flex items-center justify-center px-6 bg-white text-gray-900;
 }
@@ -30,7 +29,6 @@
     @apply text-gray-600 mt-6 max-w-xl mx-auto;
 }
 
-/* Buttons */
 .hero-buttons {
     @apply flex justify-center gap-4 mt-8;
 }
@@ -43,7 +41,6 @@
     @apply px-5 py-2.5 bg-white text-black border border-black rounded-lg font-medium text-base hover:bg-gray-100;
 }
 
-/* Hero number cards */
 .hero-cards {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, max-content));
@@ -68,7 +65,6 @@
     font-size: 0.75rem;
 }
 
-/* ---------------- TEAM SECTION ---------------- */
 .team {
     @apply py-16 bg-white text-gray-900;
 }
@@ -85,7 +81,6 @@
     @apply text-gray-600 mt-3 mb-12;
 }
 
-/* Team cards grid */
 .team-cards {
     @apply grid grid-cols-1 md:grid-cols-3 gap-8 mb-12;
 }
@@ -113,9 +108,9 @@
 }
 
 .skill-card { 
-    @apply bg-gray-200 px-2 py-0.5 text-[0.65rem] text-gray-700; 
+    @apply bg-gray-200 px-2 py-0.5 text-[0.75rem] text-gray-700; 
     border-radius: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .skills-row { 
@@ -127,7 +122,15 @@
 }
 
 .team-buttons button {
-    @apply px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800;
+    @apply px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-800;
+    border-radius: 0;
     margin-bottom: 1rem;
+}
+
+.icon { 
+    width: 18px; 
+    height: 18px; 
+    object-fit: contain; 
+    display: block; 
 }
 
