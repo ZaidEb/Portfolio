@@ -9,6 +9,9 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.cdnfonts.com/css/longsile" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet" />
     <link rel="stylesheet" href="./src/output.css" />
     <title>Portfolio</title>
   </head>
@@ -38,34 +41,59 @@
     </div>
 
     <!-- PERSON 1 SECTION -->
-    <section class="hero relative" id="home">
-    <div class="hero-content relative z-10">
+    <section class="hero hero-sliced" id="home">
+      <div class="hero-backgrounds" aria-hidden="true">
+        <div class="background-frame"></div>
+        <div class="background-image default"></div>
+        <div class="background-image focus"></div>
+        <div class="background-image presence"></div>
+        <div class="background-image feel"></div>
+        <div class="bottom-gradient"></div>
 
-      <h1 class="hero-title">Team 2</h1>
-      <h2 class="hero-subtitle">IT-Solutions</h2>
-
-      <p class="hero-text">
-        A passionate team of developers and designers creating modern, scalable, and user-focused digital solutions.
-      </p>
-
-      <div class="hero-buttons">
-        <button class="btn-primary"><a href="#Contact">Get In Touch ➜</a></button>
-        <button class="btn-secondary"><a href="#Projects">View Our Work</a></button>
-      </div>
-
-      <div class="hero-cards">
-        <div class="card">
-          <h3>30+</h3>
-          <p>Happy Clients</p>
-        </div>
-
-        <div class="card">
-          <h3>50+</h3>
-          <p>Completed Projects</p>
+        <div class="text-background">
+          <span class="text-item highlight" style="top: 10%; left: 6%;">Focus</span>
+          <span class="text-item" style="top: 16%; right: 10%;">Studio</span>
+          <span class="text-item highlight" style="top: 28%; left: 12%;">Design</span>
+          <span class="text-item" style="top: 36%; right: 16%;">Development</span>
+          <span class="text-item highlight" style="top: 52%; left: 8%;">Branding</span>
+          <span class="text-item" style="top: 60%; right: 12%;">Experience</span>
+          <span class="text-item highlight-reverse" style="top: 72%; left: 18%;">Strategy</span>
+          <span class="text-item" style="top: 82%; right: 8%;">Craft</span>
         </div>
       </div>
 
-    </div>
+      <div class="main-content">
+        <div class="sliced-container">
+          <div class="text-row">
+            <div class="text-content">Team</div>
+          </div>
+          <div class="text-row">
+            <div class="text-content">Two</div>
+          </div>
+        </div>
+
+        <p class="hero-tagline">IT Solutions</p>
+        <p class="hero-text">
+          A passionate team of developers and designers creating modern, scalable, and user-focused digital solutions.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary"><a href="#Contact">Get In Touch ➜</a></button>
+          <button class="btn-secondary"><a href="#Projects">View Our Work</a></button>
+        </div>
+
+        <div class="hero-cards">
+          <div class="card">
+            <h3>30+</h3>
+            <p>Happy Clients</p>
+          </div>
+
+          <div class="card">
+            <h3>50+</h3>
+            <p>Completed Projects</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="team relative" id="team">
@@ -253,6 +281,47 @@
               </div>
               <a class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow transition hover:translate-x-1" href="#project-ai">→</a>
             </div>
+          </article>
+        </div>
+      </div>
+
+      <div id="services" class="services-section">
+        <div class="services-header">
+          <h2 class="services-title">Our Services</h2>
+          <a class="services-cta" href="#contact">
+            Learn more <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="services-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-12">
+          <article class="service-card xl:col-span-6">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>Product Design</h3>
+          </article>
+
+          <article class="service-card xl:col-span-6">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>UX/UI Design</h3>
+          </article>
+
+          <article class="service-card xl:col-span-4">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>Mobile Applications</h3>
+          </article>
+
+          <article class="service-card xl:col-span-4">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>Development</h3>
+          </article>
+
+          <article class="service-card xl:col-span-4">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>Video Editing</h3>
+          </article>
+
+          <article class="service-card xl:col-span-12">
+            <span class="service-dot" aria-hidden="true"></span>
+            <h3>Graphic Design & Branding</h3>
           </article>
         </div>
       </div>
