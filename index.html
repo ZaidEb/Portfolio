@@ -352,6 +352,20 @@
   </head>
 
   <body>
+    <header id="header" class="header-menu opacity-0 pointer-events-none">
+      <div class="header-container">
+        <div class="header-logo">Team 2</div>
+
+        <nav class="header-nav">
+          <a href="#home">Home</a>
+          <a href="#team">Team</a>
+          <a href="#projects">Projects</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
     <!-- Smooth cursor overlay -->
     <div class="cursor-hint" data-cursor-hint>
       <span class="hint-mobile">Tap anywhere to see the cursor</span>
@@ -362,10 +376,10 @@
     </div>
 
     <!-- PERSON 1 SECTION -->
-    <section class="hero">
+    <section class="hero" id="home">
     <div class="hero-content">
 
-      <h1 class="hero-title" id="title">Team 2</h1>
+      <h1 class="hero-title">Team 2</h1>
       <h2 class="hero-subtitle">IT-Solutions</h2>
 
       <p class="hero-text">
@@ -373,8 +387,8 @@
       </p>
 
       <div class="hero-buttons">
-        <button class="btn-primary">Get In Touch ➜</button>
-        <button class="btn-secondary">View Our Work</button>
+        <button class="btn-primary"><a href="#Contact">Get In Touch ➜</a></button>
+        <button class="btn-secondary"><a href="#Projects">View Our Work</a></button>
       </div>
 
       <div class="hero-cards">
@@ -390,108 +404,108 @@
       </div>
 
     </div>
-  </section>
+    </section>
 
-  <section class="team">
-  <div class="team-content">
+    <section class="team" id="team">
+    <div class="team-content">
 
-    <!-- Title -->
-    <h2 class="team-title" id="team">Meet The Team</h2>
-    <p class="team-text">
-      Talented individuals working together to bring your ideas to life.
-    </p>
+      <!-- Title -->
+      <h2 class="team-title">Meet The Team</h2>
+      <p class="team-text">
+        Talented individuals working together to bring your ideas to life.
+      </p>
 
-    <!-- Team Cards -->
-    <div class="team-cards">
-      <div class="team-card">
-        <img src="" alt="Member 1" class="team-card-img">
-        <h3 class="team-card-name">Dario</h3>
-        <p class="team-card-role">Full-Stack Dev</p>
-        
-        <!-- skill cards -->
-        <div class="skills-row">
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">React</div>
-          <div class="skill-card">Node.js</div>
-          <div class="skill-card">Tailwind</div>
+      <!-- Team Cards -->
+      <div class="team-cards">
+        <div class="team-card">
+          <img src="" alt="" class="team-card-img">
+          <h3 class="team-card-name">Dario</h3>
+          <p class="team-card-role">Full-Stack Dev</p>
+          
+          <!-- skill cards -->
+          <div class="skills-row">
+            <div class="skill-card">React</div>
+            <div class="skill-card">Node.js</div>
+            <div class="skill-card">TypeScript</div>
+            <div class="skill-card">Java</div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="team-buttons">
+            <button class="btn-primary">
+              <img src="media/github.png" alt="GitHub" class="icon">
+            </button>
+
+            <button class="btn-secondary">
+              <img src="media/inBug.png" alt="LinkedIn" class="icon">
+            </button>
+
+            <button class="btn-primary">
+              <img src="media/mail.png" alt="Mail" class="icon">
+            </button>
+          </div>
         </div>
 
-        <!-- Buttons -->
-        <div class="team-buttons">
-          <button class="btn-primary">
-            <img src="media/github.png" alt="GitHub" class="icon">
-          </button>
+        <div class="team-card">
+          <img src="" alt="" class="team-card-img">
+          <h3 class="team-card-name">Zaid</h3>
+          <p class="team-card-role">Frontend Dev</p>
+          
+          <!-- skill cards -->
+          <div class="skills-row">
+            <div class="skill-card">React</div>
+            <div class="skill-card">Vue.js</div>
+            <div class="skill-card">CSS/Tailwind</div>
+            <div class="skill-card">UI/UX</div>
+          </div>
 
-          <button class="btn-secondary">
-            <img src="media/inBug.png" alt="LinkedIn" class="icon">
-          </button>
+          <!-- Buttons -->
+          <div class="team-buttons">
+            <button class="btn-primary">
+              <img src="media/github.png" alt="GitHub" class="icon">
+            </button>
 
-          <button class="btn-primary">
-            <img src="media/mail.png" alt="Mail" class="icon">
-          </button>
-        </div>
-      </div>
+            <button class="btn-secondary">
+              <img src="media/inBug.png" alt="LinkedIn" class="icon">
+            </button>
 
-      <div class="team-card">
-        <img src="" alt="Member 2" class="team-card-img">
-        <h3 class="team-card-name">Zaid</h3>
-        <p class="team-card-role">Frontend Dev</p>
-        
-        <!-- skill cards -->
-        <div class="skills-row">
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">React</div>
-          <div class="skill-card">Node.js</div>
-          <div class="skill-card">Tailwind</div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="team-buttons">
-          <button class="btn-primary">
-            <img src="media/github.png" alt="GitHub" class="icon">
-          </button>
-
-          <button class="btn-secondary">
-            <img src="media/inBug.png" alt="LinkedIn" class="icon">
-          </button>
-
-          <button class="btn-primary">
-            <img src="media/mail.png" alt="Mail" class="icon">
-          </button>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <img src="" alt="Member 3" class="team-card-img">
-        <h3 class="team-card-name">Niklas</h3>
-        <p class="team-card-role">Backend Dev</p>
-        
-        <!-- skill cards -->
-        <div class="skills-row">
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">React</div>
-          <div class="skill-card">Node.js</div>
-          <div class="skill-card">Tailwind</div>
+            <button class="btn-primary">
+              <img src="media/mail.png" alt="Mail" class="icon">
+            </button>
+          </div>
         </div>
 
-        <!-- Buttons -->
-        <div class="team-buttons">
-          <button class="btn-primary">
-            <img src="media/github.png" alt="GitHub" class="icon">
-          </button>
+        <div class="team-card">
+          <img src="" alt="" class="team-card-img">
+          <h3 class="team-card-name">Niklas</h3>
+          <p class="team-card-role">Backend Dev</p>
 
-          <button class="btn-secondary">
-            <img src="media/inBug.png" alt="LinkedIn" class="icon">
-          </button>
+          <!-- skill cards -->
+          <div class="skills-row">
+            <div class="skill-card">Python</div>
+            <div class="skill-card">Django</div>
+            <div class="skill-card">AWS</div>
+            <div class="skill-card">Docker</div>
+          </div>
 
-          <button class="btn-primary">
-            <img src="media/mail.png" alt="Mail" class="icon">
-          </button>
+          <!-- Buttons -->
+          <div class="team-buttons">
+            <button class="btn-primary">
+              <img src="media/github.png" alt="GitHub" class="icon">
+            </button>
+
+            <button class="btn-secondary">
+              <img src="media/inBug.png" alt="LinkedIn" class="icon">
+            </button>
+
+            <button class="btn-primary">
+              <img src="media/mail.png" alt="Mail" class="icon">
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </section>
+    </section>
 
     <!-- PERSON 2 SECTION (animated block) -->
     <section
@@ -896,6 +910,8 @@
         });
       })();
     </script>
+
     <script src="./src/scroll.js"></script>
+    <script src="./src/headerScroll.js"></script>
   </body>
 </html>
