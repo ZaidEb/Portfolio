@@ -156,3 +156,103 @@ document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el)
 
 // Initialize spotlight for all containers
 // document.querySelectorAll("[data-spotlight-container]").forEach(attachSpotlight);
+
+// Lightweight text scramble (no paid plugins)
+(() => {
+  const elements = document.querySelectorAll("[data-scramble]");
+  if (!elements.length) return;
+
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const randomChar = () => charset[Math.floor(Math.random() * charset.length)];
+
+  const scrambleTo = (output, text) => {
+    const previous = output.textContent || "";
+    const length = Math.max(previous.length, text.length);
+    const queue = [];
+
+    for (let i = 0; i < length; i += 1) {
+      const from = previous[i] || " ";
+      const to = text[i] || " ";
+      const start = Math.floor(Math.random() * 8);
+      const end = start + Math.floor(Math.random() * 12) + 6;
+      queue.push({ from, to, start, end });
+    }
+
+    let frame = 0;
+    const update = () => {
+      let complete = 0;
+      let result = "";
+
+      queue.forEach((item) => {
+        if (frame >= item.end) {
+          complete += 1;
+          result += item.to;
+        } else if (frame >= item.start) {
+          result += item.to === " " ? " " : randomChar();
+        } else {
+          result += item.from;
+        }
+      });
+
+      output.textContent = result;
+
+      if (complete === queue.length) {
+        output.textContent = text;
+        return;
+      }
+
+      frame += 1;
+      requestAnimationFrame(update);
+    };
+
+    update();
+  };
+
+  elements.forEach((el) => {
+    const phrases = (el.dataset.phrases || "")
+      .split("|")
+      .map((phrase) => phrase.trim())
+      .filter(Boolean);
+    const output = el.querySelector(".scramble-output");
+    if (!output || phrases.length === 0) return;
+
+    let index = 0;
+    output.textContent = phrases[index];
+
+    const cycle = () => {
+      index = (index + 1) % phrases.length;
+      scrambleTo(output, phrases[index]);
+      const delay = Math.max(1600, phrases[index].length * 80);
+      setTimeout(cycle, delay);
+    };
+
+    setTimeout(cycle, 1800);
+  });
+})();
+
+// Theme toggle (dark/light)
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) return;
+
+  const storedTheme = localStorage.getItem("theme");
+  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
+  const initialTheme = storedTheme || (prefersLight ? "light" : "dark");
+
+  root.dataset.theme = initialTheme;
+
+  const updateLabel = (theme) => {
+    toggle.textContent = theme === "light" ? "Dark mode" : "Light mode";
+    toggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+  };
+
+  updateLabel(initialTheme);
+
+  toggle.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
+    root.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    updateLabel(nextTheme);
+  });
+})();

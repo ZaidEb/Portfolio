@@ -21,13 +21,18 @@
       <div class="header-container">
         <div class="header-logo">Team 2</div>
 
-        <nav class="header-nav">
-          <a href="#home">Home</a>
-          <a href="#team">Team</a>
-          <a href="#projects">Projects</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div class="header-actions">
+          <nav class="header-nav">
+            <a href="#home">Home</a>
+            <a href="#team">Team</a>
+            <a href="#projects">Projects</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            Light mode
+          </button>
+        </div>
       </div>
     </header>
 
@@ -51,14 +56,38 @@
         <div class="bottom-gradient"></div>
 
         <div class="text-background">
-          <span class="text-item highlight" style="top: 10%; left: 6%;">Focus</span>
-          <span class="text-item" style="top: 16%; right: 10%;">Studio</span>
-          <span class="text-item highlight" style="top: 28%; left: 12%;">Design</span>
-          <span class="text-item" style="top: 36%; right: 16%;">Development</span>
-          <span class="text-item highlight" style="top: 52%; left: 8%;">Branding</span>
-          <span class="text-item" style="top: 60%; right: 12%;">Experience</span>
-          <span class="text-item highlight-reverse" style="top: 72%; left: 18%;">Strategy</span>
-          <span class="text-item" style="top: 82%; right: 8%;">Craft</span>
+          <span class="text-item" style="top: 6%; left: 6%;">BUILD</span>
+          <span class="text-item" style="top: 6%; left: 18%;">SECURE</span>
+          <span class="text-item" style="top: 6%; left: 32%;">SCALE</span>
+          <span class="text-item" style="top: 6%; left: 46%;">AUTOMATE</span>
+          <span class="text-item" style="top: 6%; left: 64%;">DELIVER</span>
+          <span class="text-item" style="top: 6%; right: 8%;">ITERATE</span>
+
+          <span class="text-item" style="top: 14%; left: 8%;">CLOUD</span>
+          <span class="text-item" style="top: 14%; left: 22%;">PLATFORMS</span>
+          <span class="text-item" style="top: 14%; left: 46%;">APIS</span>
+          <span class="text-item" style="top: 14%; right: 12%;">DATA</span>
+
+          <span class="text-item" style="top: 24%; left: 10%;">RELIABILITY</span>
+          <span class="text-item" style="top: 24%; left: 40%;">OBSERVABILITY</span>
+          <span class="text-item" style="top: 24%; right: 10%;">COMPLIANCE</span>
+
+          <span class="text-item" style="top: 36%; left: 6%;">DEVOPS</span>
+          <span class="text-item" style="top: 36%; left: 22%;">SRE</span>
+          <span class="text-item" style="top: 36%; left: 32%;">CI/CD</span>
+          <span class="text-item" style="top: 36%; right: 8%;">ZERO TRUST</span>
+
+          <span class="text-item" style="top: 50%; left: 6%;">BACKUP</span>
+          <span class="text-item" style="top: 50%; left: 20%;">RECOVERY</span>
+          <span class="text-item" style="top: 50%; right: 10%;">MONITORING</span>
+
+          <span class="text-item" style="top: 66%; left: 8%;">WEB APPS</span>
+          <span class="text-item" style="top: 66%; left: 32%;">MOBILE</span>
+          <span class="text-item" style="top: 66%; right: 14%;">AI</span>
+
+          <span class="text-item" style="top: 80%; left: 10%;">ANALYTICS</span>
+          <span class="text-item" style="top: 80%; left: 35%;">INFRA</span>
+          <span class="text-item" style="top: 80%; right: 10%;">SECURITY</span>
         </div>
       </div>
 
@@ -72,10 +101,16 @@
           </div>
         </div>
 
-        <p class="hero-tagline">IT Solutions</p>
+        <p class="hero-tagline">IT SOLUTIONS · CLOUD · SECURITY</p>
         <p class="hero-text">
-          A passionate team of developers and designers creating modern, scalable, and user-focused digital solutions.
+          We build secure, scalable software, cloud platforms, and automation that keep your business fast, reliable, and ready to grow.
         </p>
+
+        <div class="scramble-line" data-scramble data-phrases="Secure cloud platforms|Zero-trust security|Automation that scales|24/7 monitoring|Data-driven decisions">
+          <span class="scramble-label">We deliver</span>
+          <span class="scramble-output"></span>
+          <span class="scramble-cursor" aria-hidden="true">|</span>
+        </div>
 
         <div class="hero-buttons">
           <button class="btn-primary"><a href="#Contact">Get In Touch ➜</a></button>
@@ -426,11 +461,11 @@
         <!-- Email -->
         <a
           href="mailto:hello@team2.com"
-          class="group cursor-pointer rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-white"
+          class="contact-card group cursor-pointer rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-white"
           aria-label="Send email to hello@team2.com"
         >
           <div class="flex items-start gap-4">
-            <div class="h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
+            <div class="contact-icon h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
               <!-- mail icon (SVG) -->
               <svg class="h-6 w-6 text-slate-700" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" />
@@ -447,11 +482,11 @@
         <!-- Phone -->
         <a
           href="tel:+41791231232"
-          class="group cursor-pointer rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-white"
+          class="contact-card group cursor-pointer rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-white"
           aria-label="Call +41 79 123 12 32"
         >
           <div class="flex items-start gap-4">
-            <div class="h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
+            <div class="contact-icon h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
               <!-- phone icon -->
               <svg class="h-6 w-6 text-slate-700" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -468,9 +503,9 @@
         </a>
 
         <!-- Location -->
-        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 sm:col-span-2 lg:col-span-1">
+        <div class="contact-card rounded-2xl border border-slate-200 bg-white shadow-sm p-6 sm:col-span-2 lg:col-span-1">
           <div class="flex items-start gap-4">
-            <div class="h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
+            <div class="contact-icon h-12 w-12 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center">
               <!-- pin icon -->
               <svg class="h-6 w-6 text-slate-700" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -490,7 +525,7 @@
       </div>
 
       <!-- Right: form card -->
-      <aside class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
+      <aside class="contact-card rounded-2xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
         <div class="space-y-4">
           <h3 class="text-2xl font-semibold text-slate-900">Send a message</h3>
 
