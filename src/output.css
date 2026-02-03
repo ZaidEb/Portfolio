@@ -1600,6 +1600,19 @@
     }
     color: var(--text-primary);
   }
+  .service-image {
+    position: absolute;
+    inset: calc(var(--spacing) * 0);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+    z-index: 0;
+  }
+  .service-card:hover .service-image {
+    opacity: 0.85;
+  }
   .service-dot {
     height: calc(var(--spacing) * 3);
     width: calc(var(--spacing) * 3);

@@ -792,6 +792,17 @@
     color: var(--text-primary);
   }
 
+  .service-image {
+    @apply absolute inset-0 w-full h-full object-cover;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+    z-index: 0;
+  }
+
+  .service-card:hover .service-image {
+    opacity: 0.85;
+  }
+
   .service-dot {
     @apply h-3 w-3 rounded-full border;
     border-color: rgba(255, 204, 0, 0.7);
