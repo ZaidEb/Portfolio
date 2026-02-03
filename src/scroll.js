@@ -51,7 +51,7 @@ const observer = new IntersectionObserver(
       observer.unobserve(section);
     });
   },
-  { threshold: 0.22 }
+  { threshold: 0 }
 );
 
 document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
