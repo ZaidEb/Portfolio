@@ -1269,6 +1269,7 @@
   }
   .header-nav {
     display: flex;
+    flex-wrap: wrap;
     gap: calc(var(--spacing) * 6);
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
