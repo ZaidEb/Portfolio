@@ -60,8 +60,16 @@
     insect.addEventListener("animationend", onEnd);
   };
 
+  // Use setTimeout recursively instead of setInterval for better control
+  const scheduleFly = () => {
+    flyTimer = setTimeout(() => {
+      fly();
+      scheduleFly();
+    }, 2200);
+  };
+
   if (!prefersReducedMotion) {
-    flyTimer = window.setInterval(fly, 2200); // slower hop cadence
+    scheduleFly();
   }
 
   window.addEventListener(
@@ -80,7 +88,7 @@
   );
 
   insect.addEventListener("click", () => {
-    if (flyTimer) window.clearInterval(flyTimer);
+    if (flyTimer) clearTimeout(flyTimer);
     insect.classList.remove("is-moving");
     insect.classList.add("is-dead");
     insect.addEventListener(

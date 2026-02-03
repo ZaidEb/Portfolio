@@ -6,7 +6,7 @@ function reveal(el, delay = 0) {
   el.classList.add("opacity-100", "translate-y-0", "scale-100");
 }
 
-// Global spotlight effect
+// Global spotlight effect (optimized with requestAnimationFrame)
 (() => {
   const spotlight = document.createElement("div");
   spotlight.style.position = "fixed";
@@ -15,17 +15,35 @@ function reveal(el, delay = 0) {
   spotlight.style.width = "100%";
   spotlight.style.height = "100%";
   spotlight.style.pointerEvents = "none";
-  spotlight.style.zIndex = "5"; // Behind content (z-10) but above backgrounds
+  spotlight.style.zIndex = "5";
   spotlight.style.transition = "opacity 0.3s ease";
-  spotlight.style.opacity = "0"; 
+  spotlight.style.opacity = "0";
   document.body.appendChild(spotlight);
 
   const colors = "rgba(56,189,248,.15), rgba(99,102,241,.10), rgba(0,0,0,0) 65%";
 
-  window.addEventListener("mousemove", (e) => {
+  let mouseX = 0;
+  let mouseY = 0;
+  let rafPending = false;
+
+  const updateSpotlight = () => {
     spotlight.style.opacity = "1";
-    spotlight.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, ${colors})`;
-  });
+    spotlight.style.background = `radial-gradient(600px circle at ${mouseX}px ${mouseY}px, ${colors})`;
+    rafPending = false;
+  };
+
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(updateSpotlight);
+      }
+    },
+    { passive: true }
+  );
 
   document.addEventListener("mouseleave", () => {
     spotlight.style.opacity = "0";

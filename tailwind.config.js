@@ -6,6 +6,17 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'theme-primary': 'var(--text-primary)',
+        'theme-secondary': 'var(--text-secondary)',
+        'theme-muted': 'var(--text-muted)',
+        'theme-disabled': 'var(--text-disabled)',
+        'theme-accent': 'var(--accent)',
+        'theme-bg': 'var(--bg-main)',
+        'theme-surface': 'var(--surface)',
+        'theme-surface-alt': 'var(--surface-alt)',
+        'theme-border': 'var(--border-subtle)',
+      },
       keyframes: {
         // smooth “appear + lift” (fallback-friendly)
         "reveal-up": {

@@ -73,29 +73,25 @@
     color: var(--text-muted);
   }
 
-  .text-slate-900 {
-    color: var(--text-primary) !important;
+  /* Semantic color classes - use these instead of slate/sky overrides */
+  .text-theme-primary {
+    color: var(--text-primary);
   }
 
-  .text-slate-800,
-  .text-slate-700 {
-    color: var(--text-secondary) !important;
+  .text-theme-secondary {
+    color: var(--text-secondary);
   }
 
-  .text-slate-600,
-  .text-slate-500 {
-    color: var(--text-muted) !important;
+  .text-theme-muted {
+    color: var(--text-muted);
   }
 
-  .text-slate-400,
-  .text-slate-300 {
-    color: var(--text-disabled) !important;
+  .text-theme-disabled {
+    color: var(--text-disabled);
   }
 
-  .text-sky-600,
-  .text-sky-500,
-  .text-blue-600 {
-    color: var(--accent) !important;
+  .text-theme-accent {
+    color: var(--accent);
   }
 
   input,
