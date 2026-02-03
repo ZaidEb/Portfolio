@@ -9,7 +9,6 @@
       "Courier New", monospace;
     --color-sky-100: oklch(95.1% 0.026 236.824);
     --color-sky-400: oklch(74.6% 0.16 232.661);
-    --color-sky-600: oklch(58.8% 0.158 241.966);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
     --color-slate-50: oklch(98.4% 0.003 247.858);
@@ -465,10 +464,6 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -488,9 +483,6 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .text-sky-600 {
-    color: var(--color-sky-600);
   }
   .text-slate-500 {
     color: var(--color-slate-500);
@@ -1476,6 +1468,23 @@
     gap: calc(var(--spacing) * 4);
   }
   .services-title {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+    @media (width >= 40rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+    @media (width >= 48rem) {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+    color: var(--accent);
+  }
+  .section-title {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
     --tw-font-weight: var(--font-weight-semibold);

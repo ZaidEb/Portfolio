@@ -721,6 +721,11 @@
     color: var(--accent);
   }
 
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight;
+    color: var(--accent);
+  }
+
   .services-cta {
     @apply inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition;
     background-color: rgba(255, 204, 0, 0.12);
