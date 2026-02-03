@@ -498,7 +498,7 @@
   }
 
   .header-nav {
-      @apply flex gap-6 text-base;
+      @apply flex flex-wrap gap-6 text-base;
   }
 
   .header-nav a {
