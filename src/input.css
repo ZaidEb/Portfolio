@@ -455,16 +455,21 @@
       @apply flex justify-center gap-2 mt-4;
   }
 
-  .team-buttons button {
-      @apply flex items-center justify-center px-2 py-2 text-sm font-medium mb-4 rounded-lg transition;
-      background-color: var(--surface-alt);
-      border: 1px solid rgba(255, 204, 0, 0.2);
-      color: var(--accent);
+  .team-buttons button,
+  .team-buttons a {
+      @apply flex items-center justify-center mb-4 rounded-lg transition;
+      padding: 0.5rem !important;
+      font-size: 0.875rem !important;
+      font-weight: 500;
+      background-color: var(--surface-alt) !important;
+      border: 1px solid rgba(255, 204, 0, 0.2) !important;
+      color: var(--accent) !important;
   }
 
-  .team-buttons button:hover {
-      background-color: rgba(255, 204, 0, 0.12);
-      border-color: rgba(255, 204, 0, 0.6);
+  .team-buttons button:hover,
+  .team-buttons a:hover {
+      background-color: rgba(255, 204, 0, 0.12) !important;
+      border-color: rgba(255, 204, 0, 0.6) !important;
   }
 
   .team-buttons .icon {
